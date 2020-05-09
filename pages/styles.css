@@ -1,37 +1,162 @@
-.centered {
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+html {
+  scroll-behavior: smooth;
 }
 
-.separator {
+.main-video {
+  width: 90%;
+  grid-area: video;
+  justify-self: left;
+}
+
+.search-video {
   width: 100%;
-  height: 10px;
 }
 
-.border {
-  border: 1px solid black;
+.nav-button {
   padding: 5px;
 }
 
-.wrapper {
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: flex-start;
+.nav-button button {
+  width: 47%;
+  margin: 5px;
+  padding: 10px;
 }
 
-.row {
-  display: flex;
+.list-kelas button {
+  width: 95%;
+}
+
+.subscribe-button {
+  margin: 5px 0px 5px 0px;
+}
+
+.subscribe-button button {
+  width: 70%;
+}
+
+.suggestion-video {
   width: 100%;
-  margin: 5px 0 5px 0;
+  grid-area: suggestion;
+  overflow-x: scroll;
 }
 
-.row > p {
-  word-break: break-word;
+.suggestion-header {
+  text-decoration: underline;
+  text-decoration-color: red;
 }
 
-.row > img {
-  margin-right: 15px;
+.alice-carousel__stage-item {
+  padding: 5px;
+}
+
+.alice-carousel__dots {
+  margin: 0px !important;
+}
+
+.video-embed {
+  width: 100%;
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+}
+.video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 97%;
+  height: 100%;
+}
+
+.padding-top-25 {
+  padding-top: 25px !important;
+}
+
+.padding-top-20 {
+  padding-top: 20px !important;
+}
+
+.margin-0 {
+  margin: 0px !important;
+}
+
+.sticky-nav {
+  position: sticky !important;
+  top: 20px;
+  height: 100vh;
+  padding: 20px;
+}
+
+.testimoni-siswa ul {
+  list-style: none;
+  width: 100%;
+}
+
+.testimoni-siswa {
+  position: relative;
+  display: table;
+}
+
+.siswa-1 {
+  width: 50%;
+  position: relative;
+  height: 289px;
+  float: left;
+  box-sizing: border-box;
+}
+
+li.siswa-1::after {
+  background-image: url("https://pbs.twimg.com/media/BdTb3R7IMAAwRgk.jpg");
+  right: 0;
+  content: "";
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: top center;
+  float: right;
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+}
+
+.siswa-1 blockquote {
+  font: italic 16px/140% Georgia, "Times New Roman", serif;
+  display: block;
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  width: 50%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0 25px;
+  transform: translateY(-50%);
+}
+
+.quote {
+  font: italic 16px/140% Georgia, "Times New Roman", serif;
+}
+
+@media screen and (max-width: 767px) {
+  .respon-siswa {
+    flex-direction: column;
+    margin: 2em 0;
+    align-items: center;
+  }
+}
+
+.tanpa-batas {
+  padding: 0px !important;
+  margin: 0px !important;
+}
+
+.dropdown-filter a {
+  vertical-align: baseline !important;
+}
+
+.cara-kerja-active {
+  border: solid cadetblue !important;
 }
