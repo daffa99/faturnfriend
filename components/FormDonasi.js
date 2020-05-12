@@ -31,23 +31,38 @@ const FormDonasi = (props) => {
 
                 <Form>
                   <Form.Field>
-                    <label for="nama">Nama</label>
-                    <input id="nama" placeholder="Ilham Faturrahman" />
-                  </Form.Field>
-                  <Form.Field>
-                    <label for="pesan">Pesan</label>
-                    <input id="pesan" placeholder="Semoga Berkah" />
-                  </Form.Field>
-                  <Form.Field>
-                    <label for="email">Email</label>
+                    <label htmlFor="nama">Nama</label>
                     <input
-                      id="email"
-                      name="email"
-                      placeholder="fatur@gmail.com"
+                      id="nama"
+                      placeholder="Ilham Faturrahman"
+                      name="nama"
+                      onChange={props.handleChange}
+                      required
                     />
                   </Form.Field>
                   <Form.Field>
-                    <label for="jumlah-donasi">Jumlah Donasi</label>
+                    <label htmlFor="pesan">Pesan</label>
+                    <input
+                      id="pesan"
+                      name="pesan"
+                      placeholder="Semoga Berkah"
+                      onChange={props.handleChange}
+                      required
+                    />
+                  </Form.Field>
+                  <Form.Field>
+                    <label htmlFor="email">Email</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      placeholder="fatur@gmail.com"
+                      onChange={props.handleChange}
+                      required
+                    />
+                  </Form.Field>
+                  <Form.Field>
+                    <label for="valueDonasi">Jumlah Donasi</label>
                     <Button.Group
                       fluid={true}
                       size="big"
@@ -70,13 +85,19 @@ const FormDonasi = (props) => {
                     <Input labelPosition="left" className="padding-top-20">
                       <Label basic>Rp. </Label>
                       <input
-                        id="jumlah-donasi"
-                        name="jumlah-donasi"
+                        id="valueDonasi"
+                        name="valueDonasi"
                         type="number"
                         value={props.valueDonasi}
                         onChange={props.handleChange}
+                        required
                       />
-                      <Button type="submit" color="violet">
+                      <Button
+                        type="submit"
+                        color="violet"
+                        onClick={props.handleDonasi}
+                        loading={props.loading ? true : false}
+                      >
                         Donasi Sekarang <Icon name="arrow right" />
                       </Button>
                     </Input>
@@ -112,23 +133,38 @@ const FormDonasi = (props) => {
 
                 <Form>
                   <Form.Field>
-                    <label for="nama">Nama</label>
-                    <input id="nama" placeholder="Ilham Faturrahman" />
+                    <label htmlFor="nama">Nama</label>
+                    <input
+                      id="nama"
+                      name="nama"
+                      placeholder="Ilham Faturrahman"
+                      onChange={props.handleChange}
+                      required
+                    />
                   </Form.Field>
                   <Form.Field>
-                    <label for="pesan">Pesan</label>
-                    <input id="pesan" placeholder="Semoga Berkah" />
+                    <label htmlFor="pesan">Pesan</label>
+                    <input
+                      id="pesan"
+                      name="pesan"
+                      placeholder="Semoga Berkah"
+                      onChange={props.handleChange}
+                      required
+                    />
                   </Form.Field>
                   <Form.Field>
-                    <label for="email">Email</label>
+                    <label htmlFor="email">Email</label>
                     <input
                       id="email"
                       name="email"
                       placeholder="fatur@gmail.com"
+                      type="email"
+                      onChange={props.handleChange}
+                      required
                     />
                   </Form.Field>
                   <Form.Field>
-                    <label for="jumlah-donasi">Jumlah Donasi</label>
+                    <label for="valueDonasi">Jumlah Donasi</label>
                     <Button.Group fluid={true} inverted color="green">
                       <Button onClick={() => props.changeDonasi(10000)}>
                         10 K
@@ -146,16 +182,22 @@ const FormDonasi = (props) => {
                     <Input labelPosition="left" className="padding-top-20">
                       <Label basic>Rp. </Label>
                       <input
-                        id="jumlah-donasi"
-                        name="jumlah-donasi"
+                        id="valueDonasi"
+                        name="valueDonasi"
                         type="number"
                         defaultValue={props.valueDonasi}
                         onChange={props.handleChange}
+                        required
                       />
                     </Input>
                   </Form.Field>
                   <div style={{ textAlign: "center", paddingTop: "20px" }}>
-                    <Button type="submit" color="violet">
+                    <Button
+                      type="submit"
+                      color="violet"
+                      onClick={props.handleDonasi}
+                      loading={props.loading ? true : false}
+                    >
                       Donasi Sekarang <Icon name="arrow right" />
                     </Button>
                   </div>
