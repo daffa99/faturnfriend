@@ -10,6 +10,7 @@ import {
   Label,
   Responsive,
   Divider,
+  Message,
 } from "semantic-ui-react";
 // ListDonatur Component
 import ListDonatur from "./ListDonatur";
@@ -30,17 +31,21 @@ const FormDonasi = (props) => {
                 </Header>
 
                 <Form>
-                  <Form.Field>
+                  <Form.Field required>
                     <label htmlFor="nama">Nama</label>
                     <input
                       id="nama"
                       placeholder="Ilham Faturrahman"
                       name="nama"
                       onChange={props.handleChange}
-                      required
                     />
+                    {!props.errNama ? (
+                      <Label basic color="red" pointing>
+                        Kolom tidak boleh kosong
+                      </Label>
+                    ) : null}
                   </Form.Field>
-                  <Form.Field>
+                  <Form.Field required>
                     <label htmlFor="pesan">Pesan</label>
                     <input
                       id="pesan"
@@ -49,8 +54,13 @@ const FormDonasi = (props) => {
                       onChange={props.handleChange}
                       required
                     />
+                    {!props.errPesan ? (
+                      <Label basic color="red" pointing>
+                        Kolom tidak boleh kosong
+                      </Label>
+                    ) : null}
                   </Form.Field>
-                  <Form.Field>
+                  <Form.Field required>
                     <label htmlFor="email">Email</label>
                     <input
                       type="email"
@@ -60,8 +70,13 @@ const FormDonasi = (props) => {
                       onChange={props.handleChange}
                       required
                     />
+                    {!props.errEmail ? (
+                      <Label basic color="red" pointing>
+                        Kolom tidak boleh kosong
+                      </Label>
+                    ) : null}
                   </Form.Field>
-                  <Form.Field>
+                  <Form.Field required>
                     <label for="valueDonasi">Jumlah Donasi</label>
                     <Button.Group
                       fluid={true}
@@ -101,6 +116,11 @@ const FormDonasi = (props) => {
                         Donasi Sekarang <Icon name="arrow right" />
                       </Button>
                     </Input>
+                    {!props.errDonasi ? (
+                      <Label basic color="red" pointing>
+                        Kolom tidak boleh kosong
+                      </Label>
+                    ) : null}
                   </Form.Field>
                   {/* <div style={{ textAlign: "center" }}>
                     <Button type="submit" color="blue">
@@ -132,7 +152,7 @@ const FormDonasi = (props) => {
                 </Header>
 
                 <Form>
-                  <Form.Field>
+                  <Form.Field required>
                     <label htmlFor="nama">Nama</label>
                     <input
                       id="nama"
@@ -141,8 +161,13 @@ const FormDonasi = (props) => {
                       onChange={props.handleChange}
                       required
                     />
+                    {!props.errNama ? (
+                      <Label basic color="red" pointing>
+                        Kolom tidak boleh kosong
+                      </Label>
+                    ) : null}
                   </Form.Field>
-                  <Form.Field>
+                  <Form.Field required>
                     <label htmlFor="pesan">Pesan</label>
                     <input
                       id="pesan"
@@ -151,8 +176,13 @@ const FormDonasi = (props) => {
                       onChange={props.handleChange}
                       required
                     />
+                    {!props.errPesan ? (
+                      <Label basic color="red" pointing>
+                        Kolom tidak boleh kosong
+                      </Label>
+                    ) : null}
                   </Form.Field>
-                  <Form.Field>
+                  <Form.Field required>
                     <label htmlFor="email">Email</label>
                     <input
                       id="email"
@@ -162,8 +192,13 @@ const FormDonasi = (props) => {
                       onChange={props.handleChange}
                       required
                     />
+                    {!props.errEmail ? (
+                      <Label basic color="red" pointing>
+                        Kolom tidak boleh kosong
+                      </Label>
+                    ) : null}
                   </Form.Field>
-                  <Form.Field>
+                  <Form.Field required>
                     <label for="valueDonasi">Jumlah Donasi</label>
                     <Button.Group fluid={true} inverted color="green">
                       <Button onClick={() => props.changeDonasi(10000)}>
@@ -190,6 +225,11 @@ const FormDonasi = (props) => {
                         required
                       />
                     </Input>
+                    {!props.errDonasi ? (
+                      <Label basic color="red" pointing>
+                        Kolom tidak boleh kosong
+                      </Label>
+                    ) : null}
                   </Form.Field>
                   <div style={{ textAlign: "center", paddingTop: "20px" }}>
                     <Button

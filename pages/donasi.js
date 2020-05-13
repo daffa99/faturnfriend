@@ -22,17 +22,28 @@ const Donasi = ({ getWidth }) => {
   // State form
   const [state, setState] = useState({
     valueDonasi: 10000,
-    pesan: "asd",
-    email: "asd",
-    nama: "asd",
+    pesan: "",
+    email: "",
+    nama: "",
   });
   // Loading State
   const [loading, setLoading] = useState(false);
+  // Validation State
+  const [valid, setValid] = useState({
+    nama: true,
+    pesan: true,
+    email: true,
+    donasi: true,
+  });
   // SetState using callback so it didnt change the previous state
   const changeDonasi = (donasi) => {
     setState((prevState) => ({
       ...prevState,
       valueDonasi: donasi,
+    }));
+    setValid((prevState) => ({
+      ...prevState,
+      donasi: true,
     }));
   };
 
@@ -43,50 +54,90 @@ const Donasi = ({ getWidth }) => {
       ...prevState,
       [name]: value,
     }));
+    setValid((prevState) => ({
+      ...prevState,
+      [name]: true,
+    }));
     console.log(state);
+  };
+
+  const handleValidation = () => {
+    if (state.nama === "") {
+      setValid((prevState) => ({
+        ...prevState,
+        nama: false,
+      }));
+      return false;
+    }
+    if (state.pesan === "") {
+      setValid((prevState) => ({
+        ...prevState,
+        pesan: false,
+      }));
+      return false;
+    }
+    if (state.email === "") {
+      setValid((prevState) => ({
+        ...prevState,
+        email: false,
+      }));
+      return false;
+    }
+    if (state.valueDonasi === "") {
+      setValid((prevState) => ({
+        ...prevState,
+        donasi: false,
+      }));
+      return false;
+    }
+    return true;
   };
 
   const handleDonasi = (e) => {
     e.preventDefault();
-    // Set Button to be loading
-    setLoading(true);
-    const data = {
-      nama: state.nama,
-      nominal: state.valueDonasi,
-      pesan: state.pesan,
-      email: state.email,
-    };
-    axios
-      .post(
-        "http://127.0.0.1:5001/fatur-n-friends/us-central1/app/api/donasi",
-        data
-      )
-      .then((response) => {
-        // Set button to stop loading
-        setLoading(true);
-        snap.pay(response.data.token, {
-          onSuccess: function (result) {
-            console.log("success");
-            console.log(result);
-          },
-          onPending: function (result) {
-            console.log("pending");
-            console.log(result);
-          },
-          onError: function (result) {
-            console.log("error");
-            console.log(result);
-          },
-          onClose: function () {
-            console.log(
-              "customer closed the popup without finishing the payment"
-            );
-          },
+    console.log(state.nama, state.pesan, state.email, state.valueDonasi);
+    // Form validation
+    if (handleValidation()) {
+      // Set Button to be loading
+      setLoading(true);
+      const data = {
+        nama: state.nama,
+        nominal: state.valueDonasi,
+        pesan: state.pesan,
+        email: state.email,
+      };
+      axios
+        .post(
+          "http://127.0.0.1:5000/fatur-n-friends/asia-east2/api/donasi",
+          data
+        )
+        .then((response) => {
+          // Set button to stop loading
+          setLoading(false);
+          snap.pay(response.data.token, {
+            onSuccess: function (result) {
+              console.log("success");
+              console.log(result);
+            },
+            onPending: function (result) {
+              console.log("pending");
+              console.log(result);
+            },
+            onError: function (result) {
+              console.log("error");
+              console.log(result);
+            },
+            onClose: function () {
+              console.log(
+                "customer closed the popup without finishing the payment"
+              );
+            },
+          });
+        })
+        .catch((error) => {
+          console.log(error);
         });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    }
   };
 
   return (
@@ -106,6 +157,10 @@ const Donasi = ({ getWidth }) => {
         handleChange={handleChange}
         handleDonasi={handleDonasi}
         loading={loading}
+        errNama={valid.nama}
+        errEmail={valid.email}
+        errPesan={valid.pesan}
+        errDonasi={valid.donasi}
       />
     </React.Fragment>
   );
