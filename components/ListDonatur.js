@@ -2,6 +2,17 @@
 import { Card, Header } from "semantic-ui-react";
 
 const ListDonatur = (props) => {
+  let donatur = props.listDonatur.map((data) => {
+    return (
+      <Card fluid>
+        <Card.Content>
+          <Card.Header>{data.nama}</Card.Header>
+          <Card.Meta>{data.nominal}</Card.Meta>
+          <Card.Description>{data.pesan}</Card.Description>
+        </Card.Content>
+      </Card>
+    );
+  });
   return (
     <React.Fragment>
       <Card fluid>
@@ -24,6 +35,7 @@ const ListDonatur = (props) => {
           </Card.Description>
         </Card.Content>
       </Card>
+      {donatur}
     </React.Fragment>
   );
 };

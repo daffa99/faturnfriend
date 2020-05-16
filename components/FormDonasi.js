@@ -134,7 +134,7 @@ const FormDonasi = (props) => {
               <Header as="h2" textAlign="left" className="padding-top-20">
                 <Header.Content>Daftar Orang Baik</Header.Content>
               </Header>
-              <ListDonatur />
+              <ListDonatur {...props} />
             </Grid.Column>
           </Grid.Row>
         </Grid>
@@ -254,7 +254,7 @@ const FormDonasi = (props) => {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column width={16}>
-              <ListDonatur />
+              <ListDonatur {...props} />
             </Grid.Column>
           </Grid.Row>
         </Grid>

@@ -1,5 +1,7 @@
 // Head
 import Head from "next/head";
+// Router
+import Router from "next/router";
 import FormDonasi from "../components/FormDonasi";
 // React Hook State
 import { useState } from "react";
@@ -28,6 +30,14 @@ const Donasi = ({ getWidth }) => {
   });
   // Loading State
   const [loading, setLoading] = useState(false);
+  // State Donatur
+  const data = [
+    {
+      nama: "Mohammad Daffa",
+      nominal: "Rp 1,000,000",
+      pesan: "Test 123",
+    },
+  ];
   // Validation State
   const [valid, setValid] = useState({
     nama: true,
@@ -108,7 +118,7 @@ const Donasi = ({ getWidth }) => {
       };
       axios
         .post(
-          "http://127.0.0.1:5000/fatur-n-friends/asia-east2/api/donasi",
+          "https://asia-east2-fatur-n-friends.cloudfunctions.net/api/donasi",
           data
         )
         .then((response) => {
@@ -118,23 +128,31 @@ const Donasi = ({ getWidth }) => {
             onSuccess: function (result) {
               console.log("success");
               console.log(result);
+              alert("Donasi Sukses");
+              Router.reload();
             },
             onPending: function (result) {
               console.log("pending");
               console.log(result);
+              alert("Donasi Sedang diproses");
+              Router.reload();
             },
             onError: function (result) {
               console.log("error");
               console.log(result);
+              alert("Terjadi Kesalahan, Mohon Maaf");
+              Router.reload();
             },
             onClose: function () {
               console.log(
                 "customer closed the popup without finishing the payment"
               );
+              alert("Pembayaran dibatalkan");
             },
           });
         })
         .catch((error) => {
+          setLoading(false);
           console.log(error);
         });
     }
@@ -161,6 +179,7 @@ const Donasi = ({ getWidth }) => {
         errEmail={valid.email}
         errPesan={valid.pesan}
         errDonasi={valid.donasi}
+        listDonatur={data}
       />
     </React.Fragment>
   );
