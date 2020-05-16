@@ -9,6 +9,7 @@ import { useState } from "react";
 import MobileDetect from "mobile-detect";
 // axios
 import axios from "axios";
+import useSWR from "swr";
 
 // Check if SSR is from Mobile
 const getWidthFactory = (isMobileFromSSR) => () => {
@@ -20,7 +21,7 @@ const getWidthFactory = (isMobileFromSSR) => () => {
   return ISSR ? ssrValue : window.innerWidth;
 };
 
-const Donasi = ({ getWidth }) => {
+const Donasi = (props) => {
   // State form
   const [state, setState] = useState({
     valueDonasi: 10000,
@@ -31,13 +32,19 @@ const Donasi = ({ getWidth }) => {
   // Loading State
   const [loading, setLoading] = useState(false);
   // State Donatur
-  const data = [
-    {
-      nama: "Mohammad Daffa",
-      nominal: "Rp 1,000,000",
-      pesan: "Test 123",
-    },
-  ];
+  const initialData = props.data;
+  const {
+    data,
+  } = useSWR(
+    "https://asia-east2-fatur-n-friends.cloudfunctions.net/api/donasi/list",
+    (url) =>
+      axios
+        .get(
+          "https://asia-east2-fatur-n-friends.cloudfunctions.net/api/donasi/list"
+        )
+        .then((res) => res.data.donator),
+    { initialData }
+  );
   // Validation State
   const [valid, setValid] = useState({
     nama: true,
@@ -171,7 +178,7 @@ const Donasi = ({ getWidth }) => {
       <FormDonasi
         valueDonasi={state.valueDonasi}
         changeDonasi={changeDonasi}
-        getWidth={getWidth}
+        getWidth={props.getWidth}
         handleChange={handleChange}
         handleDonasi={handleDonasi}
         loading={loading}
@@ -188,10 +195,15 @@ const Donasi = ({ getWidth }) => {
 Donasi.getInitialProps = async ({ req }) => {
   const result = new MobileDetect(req.headers["user-agent"]);
   const isMobile = !!result.mobile();
+  const response = await axios.get(
+    "https://asia-east2-fatur-n-friends.cloudfunctions.net/api/donasi/list"
+  );
+  const data = response.data.donator;
   // console.log(result.phone());
   console.log(isMobile);
   return {
     getWidth: getWidthFactory(isMobile),
+    data: data,
   };
 };
 

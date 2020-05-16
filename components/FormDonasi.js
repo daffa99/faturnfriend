@@ -10,7 +10,7 @@ import {
   Label,
   Responsive,
   Divider,
-  Message,
+  Sticky,
 } from "semantic-ui-react";
 // ListDonatur Component
 import ListDonatur from "./ListDonatur";
@@ -24,7 +24,7 @@ const FormDonasi = (props) => {
       >
         <Grid columns={2} container>
           <Grid.Row className="padding-top-25">
-            <Grid.Column width={10}>
+            <Grid.Column width={10} className="kolom-donasi">
               <Segment>
                 <Header as="h2" textAlign="center">
                   <Header.Content>Donasi</Header.Content>
@@ -131,10 +131,23 @@ const FormDonasi = (props) => {
               </Segment>
             </Grid.Column>
             <Grid.Column width={6}>
-              <Header as="h2" textAlign="left" className="padding-top-20">
+              <Header as="h2" textAlign="center" className="padding-top-20">
                 <Header.Content>Daftar Orang Baik</Header.Content>
               </Header>
-              <ListDonatur {...props} />
+              <div
+                className="list-donasi"
+                style={{
+                  width: "100%",
+                  padding: "5px",
+                  height: "70vh",
+                  overflowY: "scroll",
+                  boxSizing: "content-box",
+                  scrollbarWidth: "none",
+                  msOverflowStyle: "none",
+                }}
+              >
+                <ListDonatur {...props} />
+              </div>
             </Grid.Column>
           </Grid.Row>
         </Grid>

@@ -173,3 +173,8 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield !important;
 }
+
+.kolom-donasi {
+  display: flex !important;
+  align-items: center !important;
+}
