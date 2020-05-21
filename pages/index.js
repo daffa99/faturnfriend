@@ -4,7 +4,8 @@ import { Card, Button, Image, Rating, Icon, Divider, Label } from 'semantic-ui-r
 // Head to Store script and stylesheet
 import Head from 'next/head';
 // Component
-import Navigasi from '../components/Header';
+import Navigasi from '../components/header';
+import NavigasiDummy from '../components/headerDummy';
 import Link from 'next/link';
 
 import dynamic from 'next/dynamic';
@@ -23,32 +24,21 @@ const Home = (props) => {
   return (
     <React.Fragment>
       <Head>
-        <title>Fatur n Friend</title>
-        <link
-          rel='stylesheet'
-          href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'
-          integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm'
-          crossOrigin='anonymous'
-        />
-        <script
-          src='https://code.jquery.com/jquery-3.2.1.slim.min.js'
-          integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN'
-          crossOrigin='anonymous'
-        ></script>
-        <script
-          src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js'
-          integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q'
-          crossOrigin='anonymous'
-        ></script>
-        <script
-          src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js'
-          integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl'
-          crossOrigin='anonymous'
-        ></script>
+          <link
+            rel='stylesheet'
+            href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'
+            integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm'
+            crossOrigin='anonymous'
+          />
+          <link
+            rel='stylesheet'
+            href='//cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css'
+          />
       </Head>
       <Navigasi />
+      <NavigasiDummy/>
       {/* introduction */}
-      <div className='container' style={{ marginTop: '70px',height:'85vh', verticalAlign:"center", paddingTop:"13vh" }}>
+      <div className='container' style={{height:'85vh', verticalAlign:"center", paddingTop:"5vw" }}>
         <div className='row'>
           <div className='col-md-5 col-sm-12 introduction'>
             <h1>Siapa Kita ?</h1>
@@ -318,8 +308,41 @@ const Home = (props) => {
           </div>
         </div>
       </div>
+      <script
+          src='https://code.jquery.com/jquery-3.2.1.slim.min.js'
+          integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN'
+          crossOrigin='anonymous'
+        ></script>
+        <script
+          src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js'
+          integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q'
+          crossOrigin='anonymous'
+        ></script>
+        <script
+          src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js'
+          integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl'
+          crossOrigin='anonymous'
+        >
+      </script>
       <style jsx>{`
+
+        @font-face {
+          font-family: "avenir";
+          src : url("../utils/Fonts/AvenirLTStd-Medium.otf");
+        }
+
+        @font-face {
+          font-family: "helvetica";
+          src : url("../utils/Fonts/Helvetica.ttf");
+        }
+
+        @font-face {
+          font-family: "poppins";
+          src : url("../utils/Fonts/Poppins-Medium.ttf");
+        }
+
         .introduction h1 {
+          font-family: avenir;
           font-size: 45px;
           font-weigth: 900;
         }
@@ -334,6 +357,7 @@ const Home = (props) => {
 
         .deskripsi p {
           font-size: 18px;
+          font-family: avenir;
         }
 
         .introduction {
@@ -341,6 +365,7 @@ const Home = (props) => {
         }
 
         .aboutUs {
+          font-family: avenir;
           font-size: 18px;
           margin-top: 10px;
           text-align: right;
@@ -352,7 +377,7 @@ const Home = (props) => {
 
         .videoIntroduction video {
           margin: 20px;
-          width: 600px;
+          width: 45vw;
           border-radius: 10px;
         }
 
@@ -396,6 +421,7 @@ const Home = (props) => {
         }
 
         .deskripsiMaps li p {
+          font-family: avenir;
           font-size: 21px;
         }
 
