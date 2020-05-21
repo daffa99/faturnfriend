@@ -8,11 +8,14 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
+    "leaflet": "^1.6.0",
+    "leaflet-geosearch": "^2.7.0",
     "mobile-detect": "^1.4.4",
     "next": "^9.1.8-canary.11",
     "react": "^16.7.0",
     "react-alice-carousel": "^1.18.0",
     "react-dom": "^16.7.0",
+    "react-leaflet": "^2.7.0",
     "react-youtube": "^7.11.2",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.84.0"
